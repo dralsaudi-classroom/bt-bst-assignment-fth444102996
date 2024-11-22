@@ -99,7 +99,40 @@ public class BT<T> {
 		return current.left == null && current.right == null;
 	}
 	public int countLeaves() {
-		throw new UnsupportedOperationException("Not supported yet.");
+		BTNode<T> p, q;
+		int leaves = 0;
+		if(empty()) 
+			return leaves;
+		p = root;
+		current = root;
+		if(isLeaf()) 
+			leaves++;
+		else 
+			leaves += RCL(current);
+		
+		return leaves;
+		
+		
+		//throw new UnsupportedOperationException("Not supported yet.");
 		// Write the method countLeafs that should return the number of leaf nodes in the tree. A leaf node is a node that has no children.
 	}
+	
+	
+	public int RCL(BTNode<T> c) { //recursive method for counting leaves after root
+		if(c==null)
+			return 0;
+		
+		current = c;
+		if(isLeaf())
+			return 1; 
+		
+		return RCL(c.left) + RCL(c.right);
+	}
+	
+	
+	
+	
+	
+	
+	
 }
